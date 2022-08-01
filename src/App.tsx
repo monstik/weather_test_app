@@ -1,25 +1,47 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import MainLayout from './layouts/MainLayout';
+import { Container, Grid } from '@mui/material';
+import Search from './components/Search/Search';
+
+import CityModal from './components/CityModal/CityModal';
+import CityCardList from './components/CityCardList/CityCardList';
 
 function App() {
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <MainLayout>
+      <Grid>
+        <Container
+          maxWidth={'sm'}
+          sx={{ marginTop: '50px' }}
         >
-          Learn React
-        </a>
-      </header>
-    </div>
+          <Grid xs={8} item>
+            <Search />
+          </Grid>
+        </Container>
+        <Container
+          sx={{
+            overflow: 'auto',
+            height: 'calc(100vh - 140px)',
+            '&::-webkit-scrollbar': {
+              width: '10px',
+            },
+            '&::-webkit-scrollbar-track': {
+              background: 'rgba(46, 45, 141, 0.65)',
+            },
+            '&::-webkit-scrollbar-thumb': {
+              backgroundColor: 'rgba(221, 255, 0, 0.8)',
+              borderRadius: '15px',
+              border: 'none',
+            },
+          }}
+          maxWidth={'xl'}
+        >
+          <CityCardList />
+        </Container>
+
+        <CityModal />
+      </Grid>
+    </MainLayout>
   );
 }
 
